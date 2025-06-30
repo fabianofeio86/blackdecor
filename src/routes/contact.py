@@ -46,8 +46,22 @@ def handle_contact():
         
         msg.attach(MIMEText(email_body, 'plain'))
         
-        # Nota: Para produção, você precisará configurar um servidor SMTP real
-        # Por enquanto, vamos simular o envio e salvar em arquivo
+        # Enviar e-mail via SMTP real
+        smtp_host = os.getenv("EMAIL_HOST")
+        smtp_port = int(os.getenv("EMAIL_PORT"))
+        smtp_user = os.getenv("EMAIL_USER")
+        smtp_pass = os.getenv("EMAIL_PASSWORD")
+        smtp_receiver = os.getenv("EMAIL_RECEIVER")
+
+        try:
+            server = smtplib.SMTP(smtp_host, smtp_port)
+            server.starttls()
+            server.login(smtp_user, smtp_pass)
+            server.sendmail(smtp_user, smtp_receiver, msg.as_string())
+            server.quit()
+        except Exception as smtp_error:
+            print(f"Erro ao enviar e-mail: {smtp_error}")
+            return jsonify({'error': 'Erro ao enviar e-mail'}), 500
         
         # Salvar em arquivo para teste
         with open('/tmp/contatos.txt', 'a') as f:
