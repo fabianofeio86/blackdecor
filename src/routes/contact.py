@@ -46,7 +46,7 @@ def handle_contact():
         
         msg.attach(MIMEText(email_body, 'plain'))
         
-        # Enviar e-mail via SMTP real
+   # Enviar e-mail via SMTP real
         smtp_host = os.getenv("EMAIL_HOST")
         smtp_port = int(os.getenv("EMAIL_PORT"))
         smtp_user = os.getenv("EMAIL_USER")
@@ -59,23 +59,15 @@ def handle_contact():
             server.login(smtp_user, smtp_pass)
             server.sendmail(smtp_user, smtp_receiver, msg.as_string())
             server.quit()
-        except Exception as smtp_error:
-            print(f"Erro ao enviar e-mail: {smtp_error}")
-            return jsonify({'error': 'Erro ao enviar e-mail'}), 500
-        
-        # Salvar em arquivo para teste
-        with open('/tmp/contatos.txt', 'a') as f:
-            f.write(f"\n--- {nome} ---\n")
-            f.write(email_body)
-            f.write("\n" + "="*50 + "\n")
         
         return jsonify({
             'success': True,
             'message': 'Solicitação enviada com sucesso! Entraremos em contato em breve.'
         })
         
-    except Exception as e:
-        return jsonify({'error': 'Erro interno do servidor'}), 500
+    except Exception as smtp_error:
+            print(f"Erro ao enviar e-mail: {smtp_error}")
+            return jsonify({'error': 'Erro ao enviar e-mail'}), 500
 
 @contact_bp.route('/health', methods=['GET'])
 def health_check():
