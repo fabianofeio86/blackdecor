@@ -35,7 +35,7 @@ def handle_contact():
         """
 
        message = Mail(
-    from_email='blackpeliculaseadesivos@outlook.com',  
+          from_email='blackpeliculaseadesivos@outlook.com',  
           to_emails='contato@blackpeliculas.com.br',
             subject=f'Nova solicitação de orçamento - {nome}',
             plain_text_content=email_body
