@@ -34,9 +34,9 @@ def handle_contact():
         Enviado através da landing page Black Decor
         """
 
-        message = Mail(
-            from_email='contato@blackpeliculas.com.br',
-            to_emails='contato@blackpeliculas.com.br',
+       message = Mail(
+    from_email='blackpeliculaseadesivos@outlook.com',  
+          to_emails='contato@blackpeliculas.com.br',
             subject=f'Nova solicitação de orçamento - {nome}',
             plain_text_content=email_body
         )
