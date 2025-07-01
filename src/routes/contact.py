@@ -11,20 +11,17 @@ def handle_contact():
     try:
         data = request.get_json()
         
-        # Validar dados obrigatórios
         required_fields = ['nome', 'telefone', 'email', 'projeto']
         for field in required_fields:
             if not data.get(field):
                 return jsonify({'error': f'Campo {field} é obrigatório'}), 400
         
-        # Extrair dados do formulário
         nome = data.get('nome')
         telefone = data.get('telefone')
         email = data.get('email')
         projeto = data.get('projeto')
         mensagem = data.get('mensagem', '')
         
-        # Criar o corpo do e-mail
         email_body = f"""
         Nova solicitação de orçamento - Black Decor
         
@@ -38,15 +35,12 @@ def handle_contact():
         Enviado através da landing page Black Decor
         """
         
-        # Configurar e-mail
         msg = MIMEMultipart()
-        msg['From'] = 'noreply@blackdecor.com'
-        msg['To'] = 'contato@blackpeliculas.com.br'
+        msg['From'] = os.getenv("EMAIL_USER")  # <- Enviando de quem vai autenticar
+        msg['To'] = os.getenv("EMAIL_RECEIVER")
         msg['Subject'] = f'Nova solicitação de orçamento - {nome}'
-        
         msg.attach(MIMEText(email_body, 'plain'))
         
-   # Enviar e-mail via SMTP real
         smtp_host = os.getenv("EMAIL_HOST")
         smtp_port = int(os.getenv("EMAIL_PORT"))
         smtp_user = os.getenv("EMAIL_USER")
@@ -59,17 +53,22 @@ def handle_contact():
             server.login(smtp_user, smtp_pass)
             server.sendmail(smtp_user, smtp_receiver, msg.as_string())
             server.quit()
-        
-        return jsonify({
-            'success': True,
-            'message': 'Solicitação enviada com sucesso! Entraremos em contato em breve.'
-        })
-        
-    except Exception as smtp_error:
-            print(f"Erro ao enviar e-mail: {smtp_error}")
-            return jsonify({'error': 'Erro ao enviar e-mail'}), 500
+            return jsonify({
+                'success': True,
+                'message': 'Solicitação enviada com sucesso! Entraremos em contato em breve.'
+            })
+        except Exception as smtp_error:
+            import traceback
+            traceback.print_exc()
+            return jsonify({'error': f'Erro ao enviar e-mail: {str(smtp_error)}'}), 500
+
+    except Exception as geral:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': 'Erro interno no servidor'}), 500
 
 @contact_bp.route('/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'ok'})
+
 
