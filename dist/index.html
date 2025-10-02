@@ -38,6 +38,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div id="servicos"></div>
     <div id="sobre"></div>
     <div id="contato"></div>
+    <div id="projetos"></div>
+    <div id="vantagens"></div>
+    <div id="materiais"></div>
     <!-- FIM DAS ÂNCORAS -->
 
     <!-- Google Tag Manager (noscript) -->
@@ -45,5 +48,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript  ) -->
     <div id="root"></div>
+
+    <!-- SCRIPT PARA ROLAGEM DE ÂNCORA -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          if (window.location.hash) {
+            var element = document.querySelector(window.location.hash);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }, 500); // Espera 500ms para o conteúdo do React carregar
+      });
+    </script>
   </body>
 </html>
