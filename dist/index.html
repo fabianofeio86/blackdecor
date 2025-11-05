@@ -5,7 +5,7 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f  );
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f   );
 })(window,document,'script','dataLayer','GTM-PT3XJ3SG');</script>
 <!-- End Google Tag Manager -->
 
@@ -21,17 +21,132 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version=\'2.0\';
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
       n.queue=[];t=b.createElement(e);t.async=!0;
       t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,\'script\',
-      \'https://connect.facebook.net/en_US/fbevents.js\'  );
-      fbq(\'init\', \'YOUR_PIXEL_ID\');
-      fbq(\'track\', \'PageView\');
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js'   );
+      fbq('init', 'YOUR_PIXEL_ID');
+      fbq('track', 'PageView');
     </script>
     -->
     <script type="module" crossorigin src="/assets/index-6uu08yhP.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D8yJ84HJ.css">
+
+    <!-- INÍCIO DO CÓDIGO CSS DO SLIDER (INJETADO POR MANUS) -->
+    <style>
+        /* ===== SLIDER STYLES (INJETADO POR MANUS) ===== */
+        .slider-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px; /* Ajuste este valor para o tamanho desejado */
+            position: relative;
+        }
+
+        .before-after-slider-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            background-color: #000;
+        }
+
+        .before-after-slider {
+            position: relative;
+            width: 100%;
+            cursor: ew-resize;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .before-after-slider img {
+            display: block;
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .before-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%; /* Ponto inicial */
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .before-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%; /* Ponto inicial */
+            width: 3px;
+            height: 100%;
+            background-color: #fff;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .slider-handle::before,
+        .slider-handle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 3px solid #00d4ff; /* Cor de destaque */
+            transform: translate(-50%, -50%);
+            left: 0;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .slider-handle::after {
+            left: auto;
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+
+        .slider-label {
+            position: absolute;
+            top: 15px;
+            padding: 6px 12px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .label-before {
+            left: 15px;
+        }
+
+        .label-after {
+            right: 15px;
+        }
+
+        .slider-caption {
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            margin-top: 12px;
+            font-style: italic;
+        }
+    </style>
+    <!-- FIM DO CÓDIGO CSS DO SLIDER (INJETADO POR MANUS) -->
   </head>
   <body>
     <!-- ÂNCORAS PARA GOOGLE ADS -->
@@ -46,7 +161,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT3XJ3SG"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript  ) -->
+    <!-- End Google Tag Manager (noscript   ) -->
     <div id="root"></div>
 
     <!-- SCRIPT PARA ROLAGEM DE ÂNCORA -->
@@ -99,5 +214,116 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
     <!-- FIM DO SCRIPT DE ROLAGEM -->
 
+    <!-- INÍCIO DO CÓDIGO JAVASCRIPT DO SLIDER (INJETADO POR MANUS) -->
+    <script>
+        // Este script injeta o HTML do slider e adiciona a funcionalidade de deslizar.
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aguardar o React carregar o conteúdo principal (a imagem estática)
+            setTimeout(function() {
+                // 1. Encontrar o elemento que contém a imagem estática atual
+                // O elemento é a imagem com alt="Ambiente transformado"
+                const staticImage = document.querySelector('img[alt="Ambiente transformado"]');
+                
+                if (staticImage) {
+                    // 2. Criar o elemento HTML do slider
+                    const sliderHTML = \`
+                        <div class="slider-container">
+                            <div class="before-after-slider-wrapper">
+                                <div class="before-after-slider" id="beforeAfterSlider">
+                                    <!-- Imagem "Depois" (base) -->
+                                    <img src="after_optimized.webp" alt="Móvel envelopado na cor verde (Depois)" class="after-image">
+                                    
+                                    <!-- Imagem "Antes" (sobreposta) -->
+                                    <div class="before-image-wrapper" id="beforeImageWrapper">
+                                        <img src="before_optimized.webp" alt="Móvel original na cor madeira (Antes)" class="before-image">
+                                    </div>
+
+                                    <!-- Handle do slider -->
+                                    <div class="slider-handle" id="sliderHandle"></div>
+
+                                    <!-- Labels -->
+                                    <div class="slider-label label-before">ANTES</div>
+                                    <div class="slider-label label-after">DEPOIS</div>
+                                </div>
+                            </div>
+                            <p class="slider-caption">↔ Deslize para ver a transformação completa</p>
+                        </div>
+                    \`;
+
+                    // 3. Substituir a imagem estática pelo HTML do slider
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = sliderHTML.trim();
+                    const sliderElement = tempDiv.firstChild;
+                    
+                    // O elemento estático está dentro de um container que precisa ser substituído
+                    // Vou tentar substituir o elemento pai da imagem estática para garantir que o layout não quebre
+                    const parentContainer = staticImage.closest('div'); 
+                    if (parentContainer) {
+                        parentContainer.replaceWith(sliderElement);
+                    } else {
+                        staticImage.replaceWith(sliderElement);
+                    }
+
+                    // 4. Adicionar a funcionalidade de deslizar
+                    const slider = document.getElementById('beforeAfterSlider');
+                    const beforeWrapper = document.getElementById('beforeImageWrapper');
+                    const handle = document.getElementById('sliderHandle');
+                    let isActive = false;
+
+                    function updateSliderPosition(e) {
+                        if (!isActive) return;
+
+                        const rect = slider.getBoundingClientRect();
+                        let x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+                        
+                        // Calcular a posição relativa
+                        let position = x - rect.left;
+
+                        // Limitar entre 0 e a largura total
+                        if (position < 0) position = 0;
+                        if (position > rect.width) position = rect.width;
+
+                        // Calcular a porcentagem
+                        const percentage = (position / rect.width) * 100;
+
+                        // Atualizar a largura da imagem "antes"
+                        beforeWrapper.style.width = percentage + '%';
+                        
+                        // Atualizar a posição do handle
+                        handle.style.left = percentage + '%';
+                    }
+
+                    // Eventos de mouse
+                    slider.addEventListener('mousedown', function(e) {
+                        isActive = true;
+                        updateSliderPosition(e);
+                    });
+
+                    document.addEventListener('mouseup', function() {
+                        isActive = false;
+                    });
+
+                    document.addEventListener('mousemove', updateSliderPosition);
+
+                    // Eventos de toque (mobile)
+                    slider.addEventListener('touchstart', function(e) {
+                        isActive = true;
+                        updateSliderPosition(e);
+                    });
+
+                    document.addEventListener('touchend', function() {
+                        isActive = false;
+                    });
+
+                    document.addEventListener('touchmove', updateSliderPosition);
+
+                    // Inicializar na posição 50%
+                    beforeWrapper.style.width = '50%';
+                    handle.style.left = '50%';
+                }
+            }, 1500); // Aumentei o tempo para garantir que o React carregue o elemento da imagem
+        });
+    </script>
+    <!-- FIM DO CÓDIGO JAVASCRIPT DO SLIDER (INJETADO POR MANUS) -->
   </body>
 </html>
