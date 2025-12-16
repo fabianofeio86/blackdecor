@@ -1,167 +1,85 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f  );
-})(window,document,'script','dataLayer','GTM-PT3XJ3SG');</script>
-<!-- End Google Tag Manager -->
-
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f  );
+    })(window,document,'script','dataLayer','GTM-PT3XJ3SG');</script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Black Decor - Envelopamento Decorativo Premium</title>
-    <meta name="description" content="Envelopamento decorativo premium para móveis, paredes e portas. Renove seu espaço sem reforma, com acabamento impecável e materiais de alta qualidade." />
+    <meta name="description" content="Envelopamento decorativo premium para móveis, paredes e portas. Renove seu espaço sem reforma." />
     
-    <!-- Meta Pixel (Facebook) - Opcional -->
-    <!--
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js'  );
-      fbq('init', 'YOUR_PIXEL_ID');
-      fbq('track', 'PageView');
-    </script>
-    -->
     <script type="module" crossorigin src="/assets/index-6uu08yhP.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D8yJ84HJ.css">
-    
-    <!-- NOVO SCRIPT DO SLIDER E CORREÇÕES DE LAYOUT (INJETADO POR MANUS) -->
-    <script src="/assets/manus_slider.js"></script>
-    <!-- FIM DO NOVO SCRIPT DO SLIDER E CORREÇÕES DE LAYOUT (INJETADO POR MANUS) -->
+    <script defer src="/assets/manus_slider.js"></script>
 
-  </head>
-  <body>
-    <!-- ÂNCORAS PARA GOOGLE ADS -->
-    <div id="servicos"></div>
-    <div id="sobre"></div>
-    <div id="contato"></div>
-    <div id="projetos"></div>
-    <div id="vantagens"></div>
-    <div id="materiais"></div>
-    <!-- FIM DAS ÂNCORAS -->
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT3XJ3SG"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript  ) -->
-    <div id="root"></div>
-
-
-    <!-- SCRIPT PARA ROLAGEM DE ÂNCORA -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          if (window.location.hash) {
-            var element = document.querySelector(window.location.hash);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
-          }
-        }, 500); // Espera 500ms para o conteúdo do React carregar
-      });
-    </script>
-  
-    <!-- SCRIPT PARA ROLAGEM DO FORMULÁRIO -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Aguardar o React carregar
-        setTimeout(function() {
-          // Encontrar todos os botões que contêm "Solicitar" ou "SOLICITE"
-          const buttons = document.querySelectorAll('button');
-          buttons.forEach(function(button) {
-            if (button.textContent.includes('Solicitar') || button.textContent.includes('SOLICITE')) {
-              // Adicionar evento de clique
-              button.addEventListener('click', function(e) {
-                // Verificar se é o botão do hero (primeiro)
-                if (button.textContent.includes('SOLICITE SEU ORÇAMENTO PERSONALIZADO')) {
-                  // Encontrar o formulário
-                  const form = document.querySelector('form');
-                  if (form) {
-                    // Rolar para o formulário com suavidade
-                    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Focar no primeiro campo do formulário
-                    const firstInput = form.querySelector('input, textarea, select');
-                    if (firstInput) {
-                      setTimeout(function() {
-                        firstInput.focus();
-                      }, 500);
-                    }
-                    e.preventDefault();
-                  }
-                }
-              });
-            }
-          });
-        }, 1000); // Aguardar 1 segundo para o React carregar completamente
-      });
-    </script>
-    <!-- FIM DO SCRIPT DE ROLAGEM -->
-
-    <!-- SCRIPT PARA ALTERAR A FRASE DE DESTAQUE E INJETAR BOTÃO FLUTUANTE DO WHATSAPP (INJETADO POR MANUS) -->
     <style>
+      /* BLOQUEIO DE CORTE LATERAL DEFINITIVO */
+      html, body {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
 
+      #root {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Previne que elementos do React forcem largura excessiva */
+      * { box-sizing: border-box !important; }
+
+      /* Botão WhatsApp Flutuante Blindado */
       .whatsapp-float {
         position: fixed;
         width: 60px;
         height: 60px;
-        bottom: 40px;
-        right: 40px;
+        bottom: 30px;
+        right: 25px;
         background-color: #25d366;
         color: #FFF;
         border-radius: 50px;
         text-align: center;
-        font-size: 30px;
-        box-shadow: 2px 2px 3px #999;
-        z-index: 1000;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        z-index: 9999;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.3s ease-in-out;
+        text-decoration: none;
       }
-      .whatsapp-float:hover {
-        transform: scale(1.1);
-      }
-      .whatsapp-icon {
-        margin-top: 2px;
+
+      @media screen and (max-width: 767px) {
+        .whatsapp-float { width: 55px; height: 55px; bottom: 20px; right: 20px; }
       }
     </style>
-    
-    <a href="https://wa.me/5551993996732?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+os+servi%C3%A7os+de+envelopamento+decorativo+da+Black+Decor." target="_blank" class="whatsapp-float" onclick="gtag('event', 'click', {'event_category': 'WhatsApp', 'event_label': 'WhatsApp Flutuante Click', 'value': 1});">
-      <svg viewBox="0 0 32 32" class="whatsapp-icon" style="width: 30px; height: 30px; fill: white;"><path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z" fill-rule="evenodd"></path></svg>
+  </head>
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT3XJ3SG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div id="root"></div>
+
+    <a href="https://wa.me/5551989410191" class="whatsapp-float botao-conversao-whats" id="whats-flutuante" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 32 32" style="width: 32px; height: 32px; fill: currentColor;"><path d="M16.007 2A14.003 14.003 0 0 0 2 16c0 3.08 1.002 6.056 2.859 8.502L2.014 30l5.655-1.84A13.882 13.882 0 0 0 16.007 30c7.732 0 14.015-6.282 14.015-14S23.74 2 16.007 2zm8.991 20.404c-.366 1.033-2.12 1.963-2.924 2.093-.722.12-1.652.19-2.651-.143a12.164 12.164 0 0 1-5.11-3.23 13.754 13.754 0 0 1-3.504-5.32c-.44-.993-.733-2.14-.383-3.033.176-.44.593-.866.866-1.12.274-.254.366-.334.548-.514.183-.18.274-.3.41-.54.14-.24.07-.46-.036-.68-.106-.22-.951-2.293-1.303-3.14-.343-.827-.694-.714-.952-.727-.243-.013-.523-.013-.803-.013s-.733.106-1.116.52c-.383.414-1.464 1.434-1.464 3.494s1.503 4.047 1.706 4.333c.203.287 2.96 4.514 7.17 6.333 1.003.434 1.786.693 2.396.886 1.006.313 1.923.273 2.646.166.807-.12 2.443-.993 2.787-1.953.344-.96.344-1.786.241-1.96-.103-.173-.38-.273-.807-.486-.426-.214-2.52-1.247-2.91-1.387-.39-.14-.674-.21-.955.213-.28.427-1.083 1.353-1.327 1.633-.243.28-.486.313-.913.1s-1.807-.666-3.44-2.12c-1.274-1.134-2.133-2.533-2.383-2.96-.25-.427-.027-.66.187-.873.193-.19.427-.493.64-.74.213-.247.283-.42.423-.7.143-.28.07-.52-.033-.733-.103-.214-.927-2.234-1.27-3.067-.33-.806-.666-.693-.913-.706-.24-.013-.513-.013-.78-.013s-.713.093-1.087.507c-.373.413-1.427 1.393-1.427 3.4s1.467 3.933 1.667 4.213c.2.28 2.887 4.393 7.0 6.16 1.003.434 1.786.693 2.396.886 1.006.313 1.923.273 2.646.166.807-.12 2.443-.993 2.787-1.953.344-.96.344-1.786.241-1.96-.103-.173-.38-.273-.807-.486z\" fill-rule=\"evenodd\"></path></svg>
     </a>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Aguardar o React carregar
-        setTimeout(function() {
-          const h1Element = document.querySelector('h1.text-5xl');
-          if (h1Element) {
-            // Nova frase de destaque
-            const newText = "Envelopamento de Móveis Premium em Porto Alegre e Região. Orçamento Rápido via WhatsApp";
-            
-            // Dividir a frase para aplicar as cores existentes
-            const parts = newText.split('. ');
-            const part1 = parts[0] + '.';
-            const part2 = parts[1];
-
-            // Criar o novo conteúdo com as cores existentes (cyan-400 e yellow-400)
-            h1Element.innerHTML = part1 + ' ' +
-                                  '<span class="text-cyan-400">' + part2.split(' via ')[0] + ' via' + '</span>' +
-                                  ' ' +
-                                  '<span class="text-yellow-400">' + part2.split(' via ')[1] + '</span>';
-          }
-        }, 1500); // Aumentado para 1.5s para garantir que o React carregue
-      });
+      function blindarWhats() {
+        const links = document.querySelectorAll('a[href*="wa.me"]');
+        links.forEach((l, i) => {
+          l.href = "https://wa.me/5551989410191";
+          l.classList.add('botao-conversao-whats');
+          if(!l.id) l.id = 'whats-api-' + i;
+        });
+      }
+      window.addEventListener('load', blindarWhats);
+      setTimeout(blindarWhats, 2000); // Garante o rastreio após o React carregar
     </script>
-    <!-- FIM DO SCRIPT PARA ALTERAR A FRASE DE DESTAQUE E INJETAR BOTÃO FLUTUANTE DO WHATSAPP (INJETADO POR MANUS) -->
   </body>
-
 </html>
