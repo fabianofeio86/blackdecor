@@ -1,85 +1,135 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f  );
     })(window,document,'script','dataLayer','GTM-PT3XJ3SG');</script>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Black Decor - Envelopamento Decorativo Premium</title>
-    <meta name="description" content="Envelopamento decorativo premium para móveis, paredes e portas. Renove seu espaço sem reforma." />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Decor | Envelopamento Premium</title>
     
-    <script type="module" crossorigin src="/assets/index-6uu08yhP.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D8yJ84HJ.css">
-    <script defer src="/assets/manus_slider.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-      /* BLOQUEIO DE CORTE LATERAL DEFINITIVO */
-      html, body {
-        max-width: 100vw !important;
-        overflow-x: hidden !important;
-        position: relative;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
+        :root { --bg: #050505; --card: #111111; --cyan: #00f2ff; --text: #ffffff; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            overflow-x: hidden;
+            background: radial-gradient(circle at top right, #003333 0%, #050505 40%);
+        }
 
-      #root {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-      }
+        .wrapper { width: 100%; max-width: 500px; margin: 0 auto; padding-bottom: 100px; }
 
-      /* Previne que elementos do React forcem largura excessiva */
-      * { box-sizing: border-box !important; }
+        /* Header Estilo Profissional */
+        header { padding: 40px 20px; text-align: center; }
+        .logo { font-size: 26px; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
+        .logo span { color: var(--cyan); text-shadow: 0 0 15px rgba(0,242,255,0.5); }
 
-      /* Botão WhatsApp Flutuante Blindado */
-      .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        bottom: 30px;
-        right: 25px;
-        background-color: #25d366;
-        color: #FFF;
-        border-radius: 50px;
-        text-align: center;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-      }
+        /* Hero com Degradê */
+        .hero { padding: 20px; text-align: center; }
+        h1 { font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
+        h1 mark { background: none; color: var(--cyan); }
+        .hero p { color: #888; font-size: 16px; margin-bottom: 30px; }
 
-      @media screen and (max-width: 767px) {
-        .whatsapp-float { width: 55px; height: 55px; bottom: 20px; right: 20px; }
-      }
+        /* Slider Blindado */
+        .swiper { width: 90%; height: 350px; border-radius: 20px; border: 1px solid #333; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Seção de Benefícios (Grid) */
+        .grid { padding: 20px; display: grid; gap: 15px; }
+        .feature-card { 
+            background: var(--card); padding: 25px; border-radius: 15px; 
+            border: 1px solid #222; transition: 0.3s;
+        }
+        .feature-card h3 { color: var(--cyan); margin-bottom: 8px; font-size: 18px; }
+        .feature-card p { font-size: 14px; color: #aaa; }
+
+        /* CTA Flutuante Luxo */
+        .cta-box { 
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 400px; z-index: 1000;
+        }
+        .btn-whats { 
+            background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
+            color: white; text-decoration: none; display: flex; align-items: center; justify-content: center;
+            padding: 20px; border-radius: 15px; font-weight: bold; font-size: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Correção de Pinça/Zoom */
+        @media (max-width: 768px) {
+            h1 { font-size: 28px; }
+        }
     </style>
-  </head>
-  <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT3XJ3SG"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <div id="root"></div>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT3XJ3SG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <a href="https://wa.me/5551989410191" class="whatsapp-float botao-conversao-whats" id="whats-flutuante" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 32 32" style="width: 32px; height: 32px; fill: currentColor;"><path d="M16.007 2A14.003 14.003 0 0 0 2 16c0 3.08 1.002 6.056 2.859 8.502L2.014 30l5.655-1.84A13.882 13.882 0 0 0 16.007 30c7.732 0 14.015-6.282 14.015-14S23.74 2 16.007 2zm8.991 20.404c-.366 1.033-2.12 1.963-2.924 2.093-.722.12-1.652.19-2.651-.143a12.164 12.164 0 0 1-5.11-3.23 13.754 13.754 0 0 1-3.504-5.32c-.44-.993-.733-2.14-.383-3.033.176-.44.593-.866.866-1.12.274-.254.366-.334.548-.514.183-.18.274-.3.41-.54.14-.24.07-.46-.036-.68-.106-.22-.951-2.293-1.303-3.14-.343-.827-.694-.714-.952-.727-.243-.013-.523-.013-.803-.013s-.733.106-1.116.52c-.383.414-1.464 1.434-1.464 3.494s1.503 4.047 1.706 4.333c.203.287 2.96 4.514 7.17 6.333 1.003.434 1.786.693 2.396.886 1.006.313 1.923.273 2.646.166.807-.12 2.443-.993 2.787-1.953.344-.96.344-1.786.241-1.96-.103-.173-.38-.273-.807-.486-.426-.214-2.52-1.247-2.91-1.387-.39-.14-.674-.21-.955.213-.28.427-1.083 1.353-1.327 1.633-.243.28-.486.313-.913.1s-1.807-.666-3.44-2.12c-1.274-1.134-2.133-2.533-2.383-2.96-.25-.427-.027-.66.187-.873.193-.19.427-.493.64-.74.213-.247.283-.42.423-.7.143-.28.07-.52-.033-.733-.103-.214-.927-2.234-1.27-3.067-.33-.806-.666-.693-.913-.706-.24-.013-.513-.013-.78-.013s-.713.093-1.087.507c-.373.413-1.427 1.393-1.427 3.4s1.467 3.933 1.667 4.213c.2.28 2.887 4.393 7.0 6.16 1.003.434 1.786.693 2.396.886 1.006.313 1.923.273 2.646.166.807-.12 2.443-.993 2.787-1.953.344-.96.344-1.786.241-1.96-.103-.173-.38-.273-.807-.486z\" fill-rule=\"evenodd\"></path></svg>
-    </a>
+    <div class="wrapper">
+        <header>
+            <div class="logo">BLACK <span>DECOR</span></div>
+        </header>
 
+        <main class="hero">
+            <h1>Envelopamento <mark>Premium</mark> em Porto Alegre</h1>
+            <p>Transformação exclusiva de cozinhas e móveis com acabamento de alto luxo.</p>
+
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="/assets/projeto2-bzqyY9t_-bzqyY9t_.jpeg"></div>
+                    <div class="swiper-slide"><img src="/assets/projeto3-C6prIGdV-C6prIGdV.jpg"></div>
+                    <div class="swiper-slide"><img src="/assets/envelopamento_moveis_novo-DedkS7uE.jpeg"></div>
+                    <div class="swiper-slide"><img src="/assets/montagemantesedepoisazulpetróleo.jpeg"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </main>
+
+        <section class="grid">
+            <div class="feature-card">
+                <h3>Design Exclusivo</h3>
+                <p>Texturas de mármore, madeira e metais importados para um visual único.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Instalação Limpa</h3>
+                <p>Sem quebra-quebra. Renove seu ambiente em apenas um dia.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Garantia Total</h3>
+                <p>Materiais de alta performance com resistência a calor e humidade.</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="cta-box">
+        <a href="https://wa.me/5551989410191" class="btn-whats" id="whats-conversao">
+            SOLICITAR ORÇAMENTO PREMIUM
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      function blindarWhats() {
-        const links = document.querySelectorAll('a[href*="wa.me"]');
-        links.forEach((l, i) => {
-          l.href = "https://wa.me/5551989410191";
-          l.classList.add('botao-conversao-whats');
-          if(!l.id) l.id = 'whats-api-' + i;
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            effect: 'fade', // Efeito de transição suave
+            fadeEffect: { crossFade: true },
+            autoplay: { delay: 3000 },
+            pagination: { el: '.swiper-pagination', clickable: true },
         });
-      }
-      window.addEventListener('load', blindarWhats);
-      setTimeout(blindarWhats, 2000); // Garante o rastreio após o React carregar
+
+        // Evento para o Google Ads
+        document.getElementById('whats-conversao').addEventListener('click', function() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({'event': 'conversao_whats_blackdecor'});
+        });
     </script>
-  </body>
+</body>
 </html>
