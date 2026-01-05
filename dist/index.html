@@ -14,7 +14,6 @@
     
     <script type="module" crossorigin src="/assets/index-6uu08yhP.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D8yJ84HJ.css">
-    
     <script src="/assets/manus_slider.js"></script>
 
     <style>
@@ -30,15 +29,6 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 min-width: 0 !important;
-            }
-        }
-
-        /* Ajuste do botão principal em telas muito pequenas */
-        @media (max-width: 400px) {
-            button.bg-cyan-500 {
-                padding-left: 10px !important;
-                padding-right: 10px !important;
-                font-size: 0.9rem !important;
             }
         }
 
@@ -73,7 +63,7 @@
     
     <div id="root"></div>
 
-    <a href="https://wa.me/5551993996732?text=Olá! Gostaria de saber mais sobre os serviços de envelopamento decorativo da Black Decor." 
+    <a href="https://wa.me/5551993996732?text=Olá! Gostaria de um orçamento para envelopamento premium." 
        target="_blank" 
        class="whatsapp-float botao-conversao-whats" 
        id="whats-flutuante-ads"
@@ -83,25 +73,29 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Rolagem suave para âncoras (URL Hash)
-        setTimeout(function() {
-          if (window.location.hash) {
-            var element = document.querySelector(window.location.hash);
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 500);
+        
+        // 1. DISPARO MANUAL DO EVENTO 'generate_lead' PARA O BOTÃO FLUTUANTE
+        const btnWhatsAds = document.getElementById('whats-flutuante-ads');
+        if (btnWhatsAds) {
+          btnWhatsAds.addEventListener('click', function() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'generate_lead', // Envia exatamente o que o GTM espera
+              'button_location': 'flutuante_fixo'
+            });
+            console.log('Evento generate_lead enviado!');
+          });
+        }
 
-        // Rolagem para o formulário ao clicar em botões de orçamento
+        // 2. Rolagem suave para o formulário
         setTimeout(function() {
           const buttons = document.querySelectorAll('button');
           buttons.forEach(button => {
-            if (button.textContent.includes('SOLICITE SEU ORÇAMENTO PERSONALIZADO')) {
+            if (button.textContent.includes('SOLICITE SEU ORÇAMENTO')) {
               button.addEventListener('click', e => {
                 const form = document.querySelector('form');
                 if (form) {
-                  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  const input = form.querySelector('input');
-                  if (input) setTimeout(() => input.focus(), 500);
+                  form.scrollIntoView({ behavior: 'smooth' });
                   e.preventDefault();
                 }
               });
@@ -109,7 +103,7 @@
           });
         }, 1000);
 
-        // Alteração da frase H1
+        // 3. Ajuste da frase H1
         setTimeout(function() {
           const h1 = document.querySelector('h1.text-5xl');
           if (h1) {
