@@ -33,22 +33,27 @@
     @media (max-width:980px){.hero-grid,.two-col,.footer-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.contact-cards{grid-template-columns:1fr}}
     @media (max-width:700px){.menu{display:none}.benefit-row,.cards{grid-template-columns:1fr}.topbar-inner{padding:10px 0}.brand img{height:54px}.hero{padding-top:44px}.lead{font-size:17px}.section{padding:52px 0}.floating-whatsapp{padding:12px 16px}}
   </style>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17298263390"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'AW-17298263390');
     gtag('config', 'G-QCW6BT3YCY');
+
     const ADS_SEND_TO = 'AW-17298263390/INqGCk7xwpOcEN6aurhA';
+
     function trackWhatsAppClick(source){
-      if(typeof gtag !== 'function') return;
-      gtag('event','conversion',{'send_to': ADS_SEND_TO});
-      gtag('event','whatsapp_click',{button_location:source || 'unknown', page_path:window.location.pathname});
-    }
-    function trackLeadForm(){
-      if(typeof gtag !== 'function') return;
-      gtag('event','generate_lead',{form_name:'landing_whatsapp_form',source:'landing_page'});
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'conversion', {
+        'send_to': ADS_SEND_TO
+      });
+      gtag('event', 'whatsapp_click', {
+        button_location: source || 'unknown',
+        page_path: window.location.pathname
+      });
     }
   </script>
 </head>
@@ -209,9 +214,16 @@
       const beforeWrap = slider.querySelector('.before-wrap');
       const line = slider.querySelector('.ba-line');
       const handle = slider.querySelector('.ba-handle');
-      const update = function(){ const value = input.value + '%'; beforeWrap.style.width = value; line.style.left = value; handle.style.left = value; };
-      input.addEventListener('input', update); update();
+      const update = function(){
+        const value = input.value + '%';
+        beforeWrap.style.width = value;
+        line.style.left = value;
+        handle.style.left = value;
+      };
+      input.addEventListener('input', update);
+      update();
     });
+
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('.tab-panel');
     tabButtons.forEach(btn => btn.addEventListener('click', () => {
@@ -219,29 +231,42 @@
       tabButtons.forEach(b => b.classList.toggle('active', b === btn));
       tabPanels.forEach(panel => panel.hidden = panel.dataset.panel !== target);
     }));
+
     document.querySelectorAll('.faq-item').forEach(item => {
       const btn = item.querySelector('.faq-q');
       btn.addEventListener('click', () => {
         const active = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(i => {i.classList.remove('active'); const s=i.querySelector('.faq-q span'); if(s) s.textContent='+';});
-        if(!active){ item.classList.add('active'); const s=item.querySelector('.faq-q span'); if(s) s.textContent='−'; }
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          const s = i.querySelector('.faq-q span');
+          if (s) s.textContent = '+';
+        });
+        if (!active) {
+          item.classList.add('active');
+          const s = item.querySelector('.faq-q span');
+          if (s) s.textContent = '−';
+        }
       });
     });
+
     document.querySelectorAll('a[data-track]').forEach(link => {
       link.addEventListener('click', () => trackWhatsAppClick(link.dataset.track));
     });
+
     const form = document.getElementById('leadForm');
     form.addEventListener('submit', function(e){
       e.preventDefault();
+
       const nome = document.getElementById('nome').value.trim();
       const telefone = document.getElementById('telefone').value.trim();
       const email = document.getElementById('email').value.trim();
       const mensagem = document.getElementById('mensagem').value.trim();
-      trackLeadForm();
+
       trackWhatsAppClick('whatsapp_form');
+
       const texto = `Olá, vim pela landing page da Black Decor.%0A%0A*Nome:* ${encodeURIComponent(nome)}%0A*Telefone:* ${encodeURIComponent(telefone)}%0A*E-mail:* ${encodeURIComponent(email)}%0A*Mensagem:* ${encodeURIComponent(mensagem)}`;
       const url = `https://wa.me/5551993996732?text=${texto}`;
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     });
   </script>
 </body>
