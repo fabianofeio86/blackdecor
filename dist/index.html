@@ -45,15 +45,32 @@
 
     const ADS_SEND_TO = 'AW-17298263390/INqGCk7xwpOcEN6aurhA';
 
-    function trackWhatsAppClick(source){
-      if (typeof gtag !== 'function') return;
+    function gtag_report_conversion(url, source, openInNewTab) {
+      var redirected = false;
+
+      var callback = function () {
+        if (redirected || typeof(url) === 'undefined' || !url) return;
+        redirected = true;
+
+        if (openInNewTab) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+          window.location = url;
+        }
+      };
+
       gtag('event', 'conversion', {
-        'send_to': ADS_SEND_TO
+        'send_to': ADS_SEND_TO,
+        'event_callback': callback
       });
+
       gtag('event', 'whatsapp_click', {
-        button_location: source || 'unknown',
-        page_path: window.location.pathname
+        'button_location': source || 'unknown',
+        'page_path': window.location.pathname
       });
+
+      setTimeout(callback, 800);
+      return false;
     }
   </script>
 </head>
@@ -250,7 +267,10 @@
     });
 
     document.querySelectorAll('a[data-track]').forEach(link => {
-      link.addEventListener('click', () => trackWhatsAppClick(link.dataset.track));
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        gtag_report_conversion(link.href, link.dataset.track, true);
+      });
     });
 
     const form = document.getElementById('leadForm');
@@ -262,11 +282,10 @@
       const email = document.getElementById('email').value.trim();
       const mensagem = document.getElementById('mensagem').value.trim();
 
-      trackWhatsAppClick('whatsapp_form');
-
       const texto = `Olá, vim pela landing page da Black Decor.%0A%0A*Nome:* ${encodeURIComponent(nome)}%0A*Telefone:* ${encodeURIComponent(telefone)}%0A*E-mail:* ${encodeURIComponent(email)}%0A*Mensagem:* ${encodeURIComponent(mensagem)}`;
       const url = `https://wa.me/5551993996732?text=${texto}`;
-      window.open(url, '_blank', 'noopener,noreferrer');
+
+      gtag_report_conversion(url, 'whatsapp_form', true);
     });
   </script>
 </body>
