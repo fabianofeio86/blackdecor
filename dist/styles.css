@@ -137,8 +137,22 @@ nav a:hover,
   padding: 68px 0 76px;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
-  align-items: center;
-  gap: clamp(44px, 7vw, 92px);
+  grid-template-areas:
+    "intro project"
+    "contact project";
+  grid-template-rows: auto auto;
+  align-content: center;
+  align-items: start;
+  column-gap: clamp(44px, 7vw, 92px);
+  row-gap: 0;
+}
+
+.hero-intro {
+  grid-area: intro;
+}
+
+.hero-contact {
+  grid-area: contact;
 }
 
 .eyebrow {
@@ -275,6 +289,8 @@ h1 em {
 }
 
 .hero-project {
+  grid-area: project;
+  align-self: center;
   position: relative;
   padding: 16px;
   border: 1px solid var(--line);
@@ -915,6 +931,12 @@ footer p {
 
   .hero {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "project"
+      "contact";
+    grid-template-rows: auto;
+    row-gap: 36px;
     padding-top: 48px;
   }
 
@@ -994,12 +1016,29 @@ footer p {
 
   .hero {
     min-height: auto;
-    padding: 42px 0 54px;
-    gap: 42px;
+    padding: 24px 0 48px;
+    row-gap: 20px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    padding: 7px 11px;
+    font-size: 0.68rem;
   }
 
   h1 {
-    font-size: clamp(2.55rem, 12vw, 3.6rem);
+    font-size: clamp(2.1rem, 10.5vw, 2.8rem);
+    line-height: 1.01;
+  }
+
+  .hero-lead {
+    margin-top: 15px;
+    font-size: 0.93rem;
+    line-height: 1.48;
+  }
+
+  .contact-consent {
+    margin-top: 0;
   }
 
   .hero-actions {
@@ -1020,15 +1059,24 @@ footer p {
   }
 
   .hero-project {
-    padding: 10px;
-    border-radius: 22px;
+    padding: 8px;
+    border-radius: 18px;
   }
 
   .project-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px 5px 12px;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    padding: 3px 4px 9px;
+  }
+
+  .project-heading span {
+    font-size: 0.63rem;
+  }
+
+  .project-heading strong {
+    font-size: 0.72rem;
+    text-align: right;
   }
 
   .before-after {
@@ -1037,7 +1085,7 @@ footer p {
   }
 
   .before-after figure {
-    height: 410px;
+    height: 205px;
   }
 
   .section {
