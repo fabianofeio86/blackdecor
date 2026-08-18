@@ -4,7 +4,6 @@
   var TRACKING_CONSENT_KEY = "black-decor-tracking-consent";
   var GOOGLE_ADS_ID = "AW-17298263390";
   var GOOGLE_ANALYTICS_ID = "G-QCW6BT3YCY";
-  var GOOGLE_ADS_CONVERSION = "AW-17298263390/INqGCk7xwpOcEN6aurhA";
 
   var deniedConsent = {
     ad_storage: "denied",
@@ -28,19 +27,20 @@
     return window.gtag;
   }
 
-  function loadGoogleTags() {
+  function initializeGoogleTags() {
     var gtag = ensureGtag();
 
-    if (document.getElementById("black-decor-google-tag")) {
+    gtag("consent", "default", deniedConsent);
+
+    if (readTrackingChoice() === "accepted") {
       gtag("consent", "update", grantedConsent);
-      return;
     }
 
-    gtag("consent", "default", deniedConsent);
-    gtag("consent", "update", grantedConsent);
     gtag("js", new Date());
     gtag("config", GOOGLE_ADS_ID);
     gtag("config", GOOGLE_ANALYTICS_ID);
+
+    if (document.getElementById("black-decor-google-tag")) return;
 
     var script = document.createElement("script");
     script.id = "black-decor-google-tag";
@@ -49,10 +49,12 @@
     document.head.appendChild(script);
   }
 
+  function grantGoogleTags() {
+    ensureGtag()("consent", "update", grantedConsent);
+  }
+
   function denyGoogleTags() {
-    if (typeof window.gtag === "function") {
-      window.gtag("consent", "update", deniedConsent);
-    }
+    ensureGtag()("consent", "update", deniedConsent);
   }
 
   function saveTrackingChoice(choice) {
@@ -75,14 +77,15 @@
   function trackWhatsApp(location) {
     if (typeof window.gtag !== "function") return;
 
-    window.gtag("event", "conversion", {
-      send_to: GOOGLE_ADS_CONVERSION
-    });
     window.gtag("event", "whatsapp_click", {
       button_location: location || "unknown",
       page_path: window.location.pathname
     });
   }
+
+  // O Consent Mode precisa ser definido antes das configurações e dos eventos.
+  // Com consentimento negado, as tags enviam somente sinais sem cookies.
+  initializeGoogleTags();
 
   document.addEventListener("DOMContentLoaded", function () {
     var cookiePanel = document.getElementById("cookie-consent");
@@ -94,16 +97,14 @@
     var contactError = document.getElementById("contact-consent-error");
     var storedChoice = readTrackingChoice();
 
-    if (storedChoice === "accepted") {
-      loadGoogleTags();
-    } else if (!storedChoice && cookiePanel) {
+    if (!storedChoice && cookiePanel) {
       cookiePanel.hidden = false;
     }
 
     if (acceptCookies) {
       acceptCookies.addEventListener("click", function () {
         saveTrackingChoice("accepted");
-        loadGoogleTags();
+        grantGoogleTags();
         cookiePanel.hidden = true;
       });
     }
